@@ -1,0 +1,16 @@
+version: "3"
+services:
+  shadowsocks-haproxy:
+    restart: always
+    container_name: shadowsocks-haproxy
+    image: colachen/shadowsocks-haproxy
+    ports:
+      - "2000:2000"
+      - "1999:1999"
+    volumes:
+      - ${PWD}/haproxy.cfg:/etc/haproxy.cfg
+      - ${PWD}/checker.sh:/usr/local/bin/checker.sh
+      - ${PWD}/supervisord.conf:/etc/supervisord.conf
+    environment:
+      - PASSWORD=PASSWORD
+      - SERVER=1.2.3.4:5678
