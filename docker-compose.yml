@@ -2,8 +2,8 @@ version: "3"
 services:
   shadowsocks-haproxy:
     restart: always
-    container_name: shadowsocks-haproxy
-    image: colachen/shadowsocks-haproxy
+    container_name: shadowsocks-haproxy-rpi
+    image: colachen/shadowsocks-haproxy-rpi
     ports:
       - "2000:2000"
       - "1999:1999"
