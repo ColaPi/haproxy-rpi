@@ -8,43 +8,49 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:      
-      DOCKER_REGISTRY: docker.io      
-      DOCKER_IMAGE: colachen/shadowsocks-haproxy-rpi     
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-      DOCKER_TARGET_PLATFORM: linux/arm/v7
-
     steps:
-      - name: Checkout the code 
+      - 
+        name: Checkout the code 
         uses: actions/checkout@v1
+      
+      -
+        name: Dockerhub login
+        env:
+            DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+            echo "${DOCKER_PASSWORD}" | docker login --username ${DOCKER_USERNAME} --password-stdin
+      
+      -
+        name: Prepare
+        id: prepare
+        run: |
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            echo ::set-output name=version::${GITHUB_REF#refs/tags/v}
+          else
+            echo ::set-output name=version::snapshot
+          fi
+          echo ::set-output name=build_date::v$(date -u +'%Y%m%d')
+          echo ::set-output name=docker_platforms::linux/arm/v7
+          echo ::set-output name=docker_image::colachen/shadowsocks-haproxy-rpi
 
-      - name: Set up Docker Buildx      
+      - 
+        name: Set up Docker Buildx
+        id: buildx     
         uses: crazy-max/ghaction-docker-buildx@v1      
         with:        
           version: latest
 
-      - name: Prepare      
-        if: success()      
-        id: prepare      
+      - 
+        name: Build and push docker image
+        env:
+            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: |        
-          echo ::set-output name=docker_platform::${DOCKER_TARGET_PLATFORM}        
-          echo ::set-output name=docker_image::${DOCKER_REGISTRY}/${DOCKER_IMAGE}        
-          echo ::set-output name=version::${GITHUB_RUN_NUMBER}  
-
-      - name: Docker Login      
-        if: success()      
-        run: |        
-          echo "${DOCKER_PASSWORD}" | docker login ${DOCKER_REGISTRY} --username "${DOCKER_USERNAME}" --password-stdin 
-
-      - name: Run Buildx (push image)      
-        if: success()      
-        run: |        
-          docker buildx build \        
-          --platform ${{ steps.prepare.outputs.docker_platform }} \        
-          --tag ${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.version }} \        
+          docker buildx build --platform ${{ steps.prepare.outputs.docker_platforms }} \
           --output "type=image,push=true" \
-          --file ./Dockerfile .
+          --tag "${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.build_date }}" \
+          --tag "${{ steps.prepare.outputs.docker_image }}:latest" \
+          --file Dockerfile . 
 
   test:
     needs: build
