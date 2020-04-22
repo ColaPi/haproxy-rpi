@@ -61,5 +61,6 @@ jobs:
 
       - name: Test docker image
         run: |
+          docker run --rm --privileged multiarch/qemu-user-static:register --reset
           docker run --rm colachen/shadowsocks-haproxy-rpi haproxy -v
           docker run --rm colachen/shadowsocks-haproxy-rpi client_linux_arm7 --version
