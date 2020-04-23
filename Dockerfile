@@ -2,7 +2,7 @@ FROM haproxy:alpine
 
 ENV HAPROXY_USER haproxy
 ENV KCP_VER 20200409
-ENV HTTP_OVER_SOCKS_VER 0.0.6
+ENV HTTP_OVER_SOCKS_VER 0.0.7
 ENV KCP_URL https://github.com/xtaci/kcptun/releases/download/v${KCP_VER}/kcptun-linux-arm7-${KCP_VER}.tar.gz
 ENV HTTP_OVER_SOCKS_URL https://github.com/colachg/http-over-socks/releases/download/v${HTTP_OVER_SOCKS_VER}/http-over-socks_${HTTP_OVER_SOCKS_VER}_linux_armv7.tar.gz
 
