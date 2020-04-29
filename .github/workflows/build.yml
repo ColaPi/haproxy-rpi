@@ -5,6 +5,7 @@ on:
     branches:
       - master
     paths:
+        - '.github/workflows/*'
         - 'Dockerfile'
         - 'supervisord.conf'
         - 'haproxy.cfg'
