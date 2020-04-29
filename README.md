@@ -1,8 +1,13 @@
-# haproxy-rpi
+# shadowsocks-haproxy
 
 Haproxy for shadowsocks. There are two kinds of backends: shadowsocks remote servers and kcptun local client. I use a custom httpget to check remote servers status.
 
 ## quick start
+
+![architecture](./architecture.jpg)
+
+
+[httpget](https://github.com/colachg/http-over-socks) is a tools to check backend servers used as external-check in haproxy
 ```
 / # httpget --help
 Usage of httpget:
@@ -22,3 +27,5 @@ Usage of httpget:
   -s string
     	server:port (default "127.0.0.1")
 ```
+
+- `docker-compose up -d` to start services.
