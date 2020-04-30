@@ -14,8 +14,8 @@ RUN addgroup -S ${HAPROXY_USER} &&\
 
 RUN apk add --update curl supervisor &&\
     # Download kcptun
-    curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_arm7 &&\
-    curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_amd64 &&\
+    curl -sSL $KCP_ARM_URL | tar xz -C /usr/bin/ client_linux_arm7 &&\
+    curl -sSL $KCP_AMD_URL | tar xz -C /usr/bin/ client_linux_amd64 &&\
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
 
 COPY supervisord.conf /etc/
