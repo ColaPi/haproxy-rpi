@@ -17,8 +17,8 @@ RUN apk add --update curl supervisor &&\
     # Download kcptun
     curl -sSL $KCP_ARM_URL | tar xz -C /usr/bin/ client_linux_arm7 &&\
     curl -sSL $KCP_AMD_URL | tar xz -C /usr/bin/ client_linux_amd64 &&\
-    curl -sSL $HTTP_OVER_SOCKS_ARM_URL| tar xz -C /usr/bin/ httpget_armv7 &&\
-    curl -sSL $HTTP_OVER_SOCKS_AMD_URL| tar xz -C /usr/bin/ httpget_amd64
+    curl -sSL $HTTP_OVER_SOCKS_ARM_URL| tar xz -C /usr/local/armv7/ httpget&&\
+    curl -sSL $HTTP_OVER_SOCKS_AMD_URL| tar xz -C /usr/local/amd64/ httpget
 
 COPY supervisord.conf /etc/
 COPY 01-kcptun.conf /etc/sysctl.d/
