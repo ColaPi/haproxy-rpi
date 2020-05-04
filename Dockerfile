@@ -14,6 +14,7 @@ COPY build.sh /
 RUN sh build.sh
 
 COPY supervisord.conf /etc/
+COPY trojan_client.json /etc/
 COPY 01-kcptun.conf /etc/sysctl.d/
 COPY haproxy.cfg /etc/
 COPY checker.sh /usr/local/bin/
