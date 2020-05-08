@@ -8,7 +8,9 @@ then
     TROJAN_GO_URL=https://github.com/p4gefau1t/trojan-go/releases/download/v${TROJAN_GO_VER}/trojan-go-linux-amd64.zip
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_amd64
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
-    curl -sSL $TROJAN_GO_URL | tar -zx -C /usr/bin/ trojan-go
+    wget $TROJAN_GO_URL
+    unzip trojan-go-linux-amd64.zip -d trojan/
+    rm -rf trojan-go-linux-amd64.zip
 fi
 
 if [ `uname -m` = armv7l ]
@@ -18,6 +20,8 @@ then
     TROJAN_GO_URL=https://github.com/p4gefau1t/trojan-go/releases/download/v${TROJAN_GO_VER}/trojan-go-linux-arm.zip
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_arm7
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
-    curl -sSL $TROJAN_GO_URL | tar -xz -C /usr/bin/ trojan-go
+    wget $TROJAN_GO_URL
+    unzip trojan-go-linux-arm.zip -d trojan/
+    rm -rf trojan-go-linux-arm.zip
 fi
 
