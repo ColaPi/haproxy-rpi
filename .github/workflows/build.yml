@@ -10,6 +10,7 @@ on:
         - 'supervisord.conf'
         - 'haproxy.cfg'
         - 'checker.sh'
+        - 'build.sh'
         - '01-kcptun.conf'
 
 jobs:
