@@ -9,7 +9,8 @@ then
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_amd64
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
     wget $TROJAN_GO_URL
-    unzip trojan-go-linux-amd64.zip 
+    mkdir trojan-go
+    unzip trojan-go-linux-amd64.zip -d trojan-go
     mv trojan-go/trojan-go /usr/bin/
     rm -rf trojan-go-linux-amd64.zip trojan-go
 fi
@@ -22,7 +23,8 @@ then
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_arm7
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
     wget $TROJAN_GO_URL
-    unzip trojan-go-linux-arm.zip
+    mkdir trojan-go
+    unzip trojan-go-linux-arm.zip -d trojan-go
     mv trojan-go/trojan-go /usr/bin/
     rm -rf trojan-go-linux-amd64.zip trojan-go
 fi
