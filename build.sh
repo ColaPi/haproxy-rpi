@@ -26,6 +26,6 @@ then
     mkdir trojan-go
     unzip trojan-go-linux-arm.zip -d trojan-go
     mv trojan-go/trojan-go /usr/bin/
-    rm -rf trojan-go-linux-amd64.zip trojan-go
+    rm -rf trojan-go-linux-arm.zip trojan-go
 fi
 
