@@ -11,7 +11,7 @@ then
     wget $TROJAN_GO_URL
     mkdir trojan-go
     unzip trojan-go-linux-amd64.zip -d trojan-go
-    mv trojan-go/trojan-go trojan-go/trojan-go/geoip.dat trojan-go/trojan-go/geosite.dat /usr/bin/
+    mv trojan-go/trojan-go trojan-go/geoip.dat trojan-go/geosite.dat /usr/bin/
     rm -rf trojan-go-linux-amd64.zip trojan-go
 fi
 
@@ -25,7 +25,7 @@ then
     wget $TROJAN_GO_URL
     mkdir trojan-go
     unzip trojan-go-linux-arm.zip -d trojan-go
-    mv trojan-go/trojan-go trojan-go/trojan-go/geoip.dat trojan-go/trojan-go/geosite.dat /usr/bin/
+    mv trojan-go/trojan-go trojan-go/geoip.dat trojan-go/geosite.dat /usr/bin/
     rm -rf trojan-go-linux-arm.zip trojan-go
 fi
 
