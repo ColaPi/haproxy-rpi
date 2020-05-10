@@ -10,6 +10,7 @@ then
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
     wget $TROJAN_GO_URL
     unzip trojan-go-linux-amd64.zip -d trojan/
+    mv trojan/trojan-go/trojan /usr/bin/
     rm -rf trojan-go-linux-amd64.zip
 fi
 
@@ -22,6 +23,7 @@ then
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
     wget $TROJAN_GO_URL
     unzip trojan-go-linux-arm.zip -d trojan/
+    mv trojan/trojan-go/trojan /usr/bin/
     rm -rf trojan-go-linux-arm.zip
 fi
 
