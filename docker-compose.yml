@@ -5,8 +5,9 @@ services:
     container_name: shadowsocks-haproxy-rpi
     image: colachen/shadowsocks-haproxy-rpi
     ports:
-      - "2000:2000"
+      - "1080:1080"
       - "1999:1999"
+      - "2000:2000"
     volumes:
       - ${PWD}/haproxy.cfg:/etc/haproxy.cfg
       - ${PWD}/checker.sh:/usr/local/bin/checker.sh

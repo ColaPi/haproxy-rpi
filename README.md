@@ -1,4 +1,10 @@
-# shadowsocks-haproxy
+# socks-client
+
+## components
+- haproxy 
+- shadowsocks-libev tool chain
+- kcptun client
+- trojan-go
 
 Haproxy for shadowsocks. There are two kinds of backends: shadowsocks remote servers and kcptun local client. I use a custom httpget to check remote servers status.
 
