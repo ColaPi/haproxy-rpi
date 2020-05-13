@@ -13,6 +13,10 @@ then
     unzip trojan-go-linux-amd64.zip -d trojan-go
     mv trojan-go/trojan-go trojan-go/geoip.dat trojan-go/geosite.dat /usr/bin/
     rm -rf trojan-go-linux-amd64.zip trojan-go
+    mkdir /tmp/repo
+    wget --no-check-certificate https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.31-r0/glibc-2.31-r0.apk
+    apk add --repositories-file=/dev/null --allow-untrusted --no-network --no-cache /tmp/repo/glibc-2.31-r0.apk
+    rm -rf /tmp/repo/2.31-r0/glibc-2.31-r0.apk
 fi
 
 if [ `uname -m` = armv7l ]
