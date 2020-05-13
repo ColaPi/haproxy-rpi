@@ -60,3 +60,17 @@ jobs:
           --tag "${{ steps.prepare.outputs.docker_image }}:${{ steps.prepare.outputs.build_date }}" \
           --tag "${{ steps.prepare.outputs.docker_image }}:latest" \
           --file Dockerfile . 
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - 
+        name: Test docker image
+        run: |
+          docker run --rm colachen/socks-client haproxy -v
+          docker run --rm colachen/socks-client client_linux_amd64 --version
+          docker run --rm colachen/socks-client trojan-go -version
