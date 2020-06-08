@@ -6,8 +6,10 @@ then
     KCP_URL=https://github.com/xtaci/kcptun/releases/download/v${KCP_VER}/kcptun-linux-amd64-${KCP_VER}.tar.gz
     HTTP_OVER_SOCKS_URL=https://github.com/colachg/http-over-socks/releases/download/v${HTTP_OVER_SOCKS_VER}/http-over-socks_${HTTP_OVER_SOCKS_VER}_linux_amd64.tar.gz
     TROJAN_GO_URL=https://github.com/p4gefau1t/trojan-go/releases/download/v${TROJAN_GO_VER}/trojan-go-linux-amd64.zip
+    DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VER}/dnscrypt-proxy-linux_amd64-${DNSCRYPT_PROXY_VER}.tar.gz
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_amd64
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
+    curl -sSL $DNSCRYPT_PROXY_URL | tar xz --strip-components=1  -C /usr/bin/ linux-amd64/dnscrypt-proxy
     wget $TROJAN_GO_URL
     mkdir trojan-go
     unzip trojan-go-linux-amd64.zip -d trojan-go
@@ -25,8 +27,10 @@ then
     KCP_URL=https://github.com/xtaci/kcptun/releases/download/v${KCP_VER}/kcptun-linux-arm7-${KCP_VER}.tar.gz
     HTTP_OVER_SOCKS_URL=https://github.com/colachg/http-over-socks/releases/download/v${HTTP_OVER_SOCKS_VER}/http-over-socks_${HTTP_OVER_SOCKS_VER}_linux_armv7.tar.gz
     TROJAN_GO_URL=https://github.com/p4gefau1t/trojan-go/releases/download/v${TROJAN_GO_VER}/trojan-go-linux-arm.zip
+    DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VER}/dnscrypt-proxy-linux_arm-${DNSCRYPT_PROXY_VER}.tar.gz
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_arm7
     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
+    curl -sSL $DNSCRYPT_PROXY_URL | tar xz --strip-components=1  -C /usr/bin/ linux-arm/dnscrypt-proxy
     wget $TROJAN_GO_URL
     mkdir trojan-go
     unzip trojan-go-linux-arm.zip -d trojan-go
@@ -41,7 +45,9 @@ then
 #     HTTP_OVER_SOCKS_URL=https://github.com/colachg/http-over-socks/releases/download/v${HTTP_OVER_SOCKS_VER}/http-over-socks_${HTTP_OVER_SOCKS_VER}_linux_armv7.tar.gz
     TROJAN_GO_URL=https://github.com/p4gefau1t/trojan-go/releases/download/v${TROJAN_GO_VER}/trojan-go-linux-arm64.zip
     curl -sSL $KCP_URL | tar xz -C /usr/bin/ client_linux_arm64
+    DNSCRYPT_PROXY_URL=https://github.com/DNSCrypt/dnscrypt-proxy/releases/download/${DNSCRYPT_PROXY_VER}/dnscrypt-proxy-linux_arm64-${DNSCRYPT_PROXY_VER}.tar.gz
 #     curl -sSL $HTTP_OVER_SOCKS_URL| tar xz -C /usr/bin/ httpget
+    curl -sSL $DNSCRYPT_PROXY_URL | tar xz --strip-components=1  -C /usr/bin/ linux-arm64/dnscrypt-proxy
     wget $TROJAN_GO_URL
     mkdir trojan-go
     unzip trojan-go-linux-arm64.zip -d trojan-go
