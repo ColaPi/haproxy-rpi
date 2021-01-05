@@ -6,9 +6,7 @@ ENV TROJAN_GO_VER 0.5.0
 ENV HTTP_OVER_SOCKS_VER 0.0.7
 ENV DNSCRYPT_PROXY_VER 2.0.44
 
-RUN addgroup -S ${HAPROXY_USER} &&\
-    adduser -S ${HAPROXY_USER} -G ${HAPROXY_USER} &&\
-    mkdir --parents /var/lib/${HAPROXY_USER} /run/${HAPROXY_USER} && \
+RUN mkdir --parents /var/lib/${HAPROXY_USER} /run/${HAPROXY_USER} && \
     chown -R ${HAPROXY_USER}:${HAPROXY_USER} /var/lib/${HAPROXY_USER}
 
 COPY build.sh /
